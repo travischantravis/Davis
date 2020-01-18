@@ -15,13 +15,9 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/find", (req, res) => {
-  res.render("find");
-});
-
-app.get("/post", (req, res) => {
-  res.render("post");
-});
+//Routes
+app.use("/uploads", require("./routes/uploads"));
+app.use("/posts", require("./routes/posts"));
 
 const port = 5000;
 
