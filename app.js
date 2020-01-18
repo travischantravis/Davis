@@ -15,6 +15,14 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/find", (req, res) => {
+  res.render("find");
+});
+
+app.get("/post", (req, res) => {
+  res.render("post");
+});
+
 const port = 5000;
 
 app.listen(port, () => {
