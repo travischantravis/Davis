@@ -8,13 +8,13 @@ const methodOverride = require("method-override");
 const crypto = require("crypto");
 const mongoose = require("mongoose");
 
-// const Upload = require("./models/Upload");
+const Upload = require("./models/Upload");
 
 const app = express();
 
 // Middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
@@ -23,11 +23,8 @@ app.set("view engine", "ejs");
 const mongoURI =
   "mongodb+srv://davis:davisdavis@davis-m9cfq.gcp.mongodb.net/test?retryWrites=true&w=majority";
 
-// Create mongo connection and get rid of warnings
-const conn = mongoose.createConnection(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+// Create mongo connection
+const conn = mongoose.createConnection(mongoURI);
 
 // Init gfs
 let gfs;
@@ -76,7 +73,7 @@ app.get("/upload1", (req, res) => {
   gfs.files.find().toArray((err, files) => {
     // Check if files exist
     if (!files || files.length === 0) {
-      res.render("upload1", { files: false });
+      res.render("upload", { files: false });
     } else {
       files.map(file => {
         if (
@@ -89,14 +86,14 @@ app.get("/upload1", (req, res) => {
           file.isImage = false;
         }
       });
-      res.render("upload1", { files: files });
+      res.render("upload", { files: files });
     }
   });
 });
 
-// @route POST /upload/image
+// @route POST /upload/upload
 // @desc uploads file to DB
-app.post("/upload/image", upload.single("file"), (req, res) => {
+app.post("/upload/upload", upload.single("file"), (req, res) => {
   // res.json({ file: req.file });
   res.redirect("/upload");
 });
@@ -158,35 +155,6 @@ app.get("/image/:filename", (req, res) => {
     }
   });
 });
-const Schema = mongoose.Schema;
-const Model = mongoose.Model;
-
-const UploadSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  item: {
-    type: String,
-    required: true
-  },
-  location: {
-    type: String,
-    required: true
-  },
-  description: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
-});
-
-class UploadClass extends Model {}
-
-const Upload = conn.model(UploadClass, UploadSchema);
 
 // @route GET /upload
 app.get("/upload", (req, res) => {
@@ -194,29 +162,19 @@ app.get("/upload", (req, res) => {
 });
 
 // @route POST /upload
-app.post("/upload/form", (req, res) => {
+app.post("/upload/form", async (req, res) => {
   const upload = new Upload({
     name: req.body.name,
     item: req.body.item,
     location: req.body.location,
     description: req.body.description
   });
-
-  upload
-    .save()
-    .then(item => {
-      res.redirect("/upload1");
-    })
-    .catch(err => {
-      res.status(400).send("unable to save to database");
-    });
-
-  // try {
-  //   const savedUpload = await upload.save();
-  //   res.redirect("/upload");
-  // } catch (err) {
-  //   res.json({ message: err });
-  // }
+  try {
+    const savedUpload = await upload.save();
+    res.redirect("/upload1");
+  } catch (err) {
+    res.json({ message: err });
+  }
 });
 
 // Routes

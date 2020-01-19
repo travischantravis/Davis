@@ -15,30 +15,29 @@
     <div class="row">
       <div class="col-md-6 m-auto">
         <h1 class="text-center display-4 my-4" style="padding-right: 0;">Lost and Found</h1>
-        <h3 class="text-center display-5 my-3">Tell us what did you lose</h3>
-        <form action="/upload/form" method="POST">
-          <div class="form-group">
-            <label for="name">Your name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Your name">
+        <h3 class="text-center display-5 my-3">Show us what did you lose</h3>
+        <form action="/upload/image" method="POST" enctype="multipart/form-data">
+          <div class="custom-file mb-3">
+            <input type="file" name="file" id="file" class="custom-file-input">
+            <label for="file" class="custom-file-label">Image of your lost item</label>
           </div>
-
-          <div class="form-group">
-            <label for="item">What did you lose?</label>
-            <input type="text" class="form-control" id="item" name="item" placeholder="Item">
-          </div>
-          <div class="form-group">
-            <label for="location">Where did you lose it?</label>
-            <input type="text" class="form-control" id="location" name="location" placeholder="Location">
-          </div>
-          <div class="form-group">
-            <label for="description">Describe more details</label>
-            <textarea class="form-control" id="description" name="description" rows="3"
-              placeholder="Description"></textarea>
-          </div>
-
           <input type="submit" value="Submit" class="btn btn-primary btn-block">
         </form>
+        <hr>
+        <% if(files){ %>
+        <% files.forEach(function(file){ %>
+        <div class="card card-body mb-3">
+          <% if(file.isImage){ %>
+          <img src="image/<%= file.filename %>" alt="">
+          <% }else{ %>
+          <%= file.filename%>
+          <% }%>
 
+        </div>
+        <%})%>
+        <% }else { %>
+        <p>No files to show</p>
+        <% } %>
       </div>
     </div>
   </div>
