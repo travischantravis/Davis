@@ -2,14 +2,21 @@
 <html lang="en">
 
 <%- include('partials/head')%>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
   integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <title>Document</title>
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+<style>
+  img {
+    width: 100%;
+  }
+</style>
+<title>Document</title>
 </head>
 
 <body>
@@ -18,38 +25,65 @@
   <div class="container">
     <div class=row>
       <div class="col-md-6 m-auto">
-        <div class="container">
-          <h1 class="text-center display-4 my-4">Find</h1>    
+
+        <h1 class="text-center display-4 my-4">Find</h1>
+
+      </div>
+    </div>
+
+    <div class="bootstrap-iso">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12 m-auto">
+            <form method="post">
+              <div class="form-group">
+                <label>Location</label>
+                <input class="form-control" id="location" name="location" type="text" placeholder="Location" />
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="date">Date</label>
+                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
+              </div>
+              <div class="form-group" style="text-align: center;">
+                <button class="btn btn-primary" name="search" type="search">Search</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-    
-    <div class="bootstrap-iso">
-      <div class="container-fluid">
-       <div class="row">
-        <div class="col-md-6 col-sm-6 col-xs-12 m-auto">
-         <form method="post">
-           <div class="form-group">
-             <label>Location</label>
-             <input class="form-control" id="location" name="location" type="text" placeholder="Location"/>
-            </div>
-           <div class="form-group">
-             <label class="control-label" for="date">Date</label>
-             <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
-           </div>
-           <div class="form-group" style="text-align: center;">
-            <button class="btn btn-primary" name="search" type="search">Search</button>
-           </div>
-         </form>
-        </div>
-       </div>    
-      </div>
-     </div>
+    <hr>
 
-     <script>
-      $(document).ready(function(){
-        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-        var options={
+    <div class="row">
+      <div class="col-md-6 m-auto">
+        <h1 class="text-center display-4" style="padding-top: 0;">Listings</h1>
+        <% for(let i = 0; i < uploads.length; i++) { %>
+        <div class="card card-body mb-3">
+          <p>Name: <%= uploads[i].name %></p>
+          <p>Item: <%= uploads[i].item %></p>
+          <p>Location: <%= uploads[i].location %></p>
+          <p>Description: <%= uploads[i].description %></p>
+          <% if(files[i]){ %>
+          <% if(files[i].isImage){ %>
+          <img src="image/<%= files[i].filename %>" alt="lost item">
+          <% }else{ %>
+          <%= files[i].filename%>
+          <% }%>
+
+          <% }else { %>
+          <p>No files to show</p>
+          <% } %>
+        </div>
+        <% } %>
+
+      </div>
+    </div>
+
+
+    <script>
+      $(document).ready(function () {
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        var options = {
           format: 'mm/dd/yyyy',
           container: container,
           todayHighlight: true,
@@ -57,9 +91,9 @@
         };
         $('#date').datepicker(options);
       })
-  </script>
+    </script>
 
-  <!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    <!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -69,4 +103,5 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>-->
 </body>
+
 </html>
