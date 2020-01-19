@@ -14,6 +14,10 @@ h1 {
   text-align: center;
 }
 
+#title_caption{
+  font-size:"10px";
+}
+
 .calibri {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }

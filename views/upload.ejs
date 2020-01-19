@@ -16,7 +16,7 @@
       <div class="col-md-6 m-auto">
         <h1 class="text-center display-4 my-4" style="padding-right: 0;">Lost and Found</h1>
         <h3 class="text-center display-5 my-3">Tell us what did you lose</h3>
-        <form action="/upload/form" method="POST">
+        <form action="/upload/form" name="helpForm" method="POST">
           <div class="form-group">
             <label for="name">Your name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Your name">
@@ -44,7 +44,7 @@
             <input type="text" class="form-control" id="reward" name="reward" placeholder="Reward (Tentative)">
           </div>
 
-          <input type="submit" value="Submit" class="btn btn-primary btn-block">
+          <input type="submit" id="#btnSubmit" value="Submit" class="btn btn-primary btn-block">
         </form>
 
       </div>
