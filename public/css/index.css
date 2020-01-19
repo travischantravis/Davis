@@ -5,12 +5,15 @@ body {
 
 .welcome {
   text-align: center;
-  color: white;
+  color: blue;
   position: relative;
 }
 
 h1 {
-  padding: 100px;
+  padding-top: 20%;
+  padding-right: 50%;
+  text-align: center;
+  left: 50%;
 }
 
 .calibri {
