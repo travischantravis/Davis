@@ -219,9 +219,38 @@ app.post("/upload/form", (req, res) => {
   // }
 });
 
+app.get("/post", async (req, res) => {
+  // res.render("post");
+  try {
+    const uploads = await Upload.find();
+    gfs.files.find().toArray((err, files) => {
+      // Check if files exist
+      if (!files || files.length === 0) {
+        res.render("post", { files: false });
+      } else {
+        files.map(file => {
+          if (
+            file.contentType === "image/jpeg" ||
+            file.contentType === "image/png" ||
+            file.contentType === "image/jpg"
+          ) {
+            file.isImage = true;
+          } else {
+            file.isImage = false;
+          }
+        });
+        res.render("post", { uploads: uploads, files: files });
+      }
+    });
+    // res.render("post", { uploads: uploads });
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
 // Routes
 // app.use("/upload", require("./routes/uploads"));
-app.use("/post", require("./routes/posts"));
+// app.use("/post", require("./routes/posts"));
 
 const port = 5000;
 
