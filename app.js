@@ -259,7 +259,7 @@ app.get("/post", async (req, res) => {
   }
 });
 
-async function quickstart() {
+async function visionFunction(imgPath) {
   // Imports the Google Cloud client library
   const vision = require("@google-cloud/vision");
 
@@ -269,17 +269,14 @@ async function quickstart() {
   });
 
   // Performs label detection on the image file
-  const [result] = await client.labelDetection("./public/img/hydro-flask.jpg");
+  const [result] = await client.labelDetection(imgPath);
   const labels = result.labelAnnotations;
   console.log("Labels:");
-  labels.forEach(label => console.log(label.description));
+  // labels.forEach(label => console.log(label.description));
+
+  console.log(labels[0].description);
+  // return labels[0].description;
 }
-
-quickstart();
-
-// Routes
-// app.use("/upload", require("./routes/uploads"));
-// app.use("/post", require("./routes/posts"));
 
 const port = 5000;
 
