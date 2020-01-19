@@ -2,7 +2,11 @@
 <html lang="en">
 
 <%- include('partials/head')%>
-
+<style>
+  img {
+    width: 100%;
+  }
+</style>
 
 <body>
   <%- include('partials/navbar')%>
@@ -11,14 +15,28 @@
     <div class="row">
       <div class="col-md-6 m-auto">
         <h1 class="text-center display-4 my-4">Mongo File Uploads</h1>
-        <form action="/upload" method="POST" enctype="multipart/form-data">
+        <form action="/upload/upload" method="POST" enctype="multipart/form-data">
           <div class="custom-file mb-3">
             <input type="file" name="file" id="file" class="custom-file-input">
             <label for="file" class="custom-file-label">Choose File</label>
           </div>
           <input type="submit" value="Submit" class="btn btn-primary btn-block">
         </form>
+        <hr>
+        <% if(files){ %>
+        <% files.forEach(function(file){ %>
+        <div class="card card-body mb-3">
+          <% if(file.isImage){ %>
+          <img src="image/<%= file.filename %>" alt="">
+          <% }else{ %>
+          <%= file.filename%>
+          <% }%>
 
+        </div>
+        <%})%>
+        <% }else { %>
+        <p>No files to show</p>
+        <% } %>
       </div>
     </div>
   </div>
