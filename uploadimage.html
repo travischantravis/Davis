@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+
+<div.image_box
+{
+width:100px;
+height:75px;
+background-color:orange;
+border:1px solid black;
+}
+#div2
+{
+width:200px;
+height:80px;
+background-color:yellow;
+}
+<body>
+<form>
+    <fieldset>
+    <h1>Lost and Found</h1>
+    <p>Please Select Type of Object Found:</p>
+    <label>Select list</label>
+    <select id = "myList">
+        <option value = "1">Please Select: </option>
+        <option value = "2">Aggie Card</option>
+        <option value = "3">Hat</option>
+        <option value = "4">Scarf</option>
+        <option value = "5">Jacket</option>
+        <option value = "6">T-Shirt</option>
+        <option value = "7">Shoes</option>
+        <option value = "8">Earbuds</option>
+        <option value = "9">Earings</option>
+        <option value = "10">Headphones</option>
+        <option value = "11">Keys</option>
+        <option value = "12">Backpack</option>
+        <option value = "13">Wallet</option>
+        <option value = "14">Bicycle</option>
+        <option value = "15">Other </option>
+    </select>
+    
+            <p><div class="image_box">Image of Lost Object for reference:</div>
+            <button onclick="uploadpicture()">Choose File</button>
+        <script>
+            function uploadpicture() {
+                var x = document.creatElement("Picture");
+                x.setattribute("type", "file");
+                document.body.appendChild(x);
+        }
+        </p>
+        </script>
+        <p>
+        <label>Found Location?</label>
+        <input type = "text"
+        id = "Description"/>
+        
+        </p>
+            <p>
+            <label>Description:</label>
+                <input type = "text"
+                    id = "Description"/>
+</p>
+<label>Date Found: </label>
+<select name="DOBDay">
+    <option>- Day -</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+    <option value="19">19</option>
+    <option value="20">20</option>
+    <option value="21">21</option>
+    <option value="22">22</option>
+    <option value="23">23</option>
+    <option value="24">24</option>
+    <option value="25">25</option>
+    <option value="26">26</option>
+    <option value="27">27</option>
+    <option value="28">28</option>
+    <option value="29">29</option>
+    <option value="30">30</option>
+    <option value="31">31</option>
+</select><select name="DOBMonth">
+    <option>- Month -</option>
+    <option value="January">January</option>
+    <option value="Febuary">Febuary</option>
+    <option value="March">March</option>
+    <option value="April">April</option>
+    <option value="May">May</option>
+    <option value="June">June</option>
+    <option value="July">July</option>
+    <option value="August">August</option>
+    <option value="September">September</option>
+    <option value="October">October</option>
+    <option value="November">November</option>
+    <option value="December">December</option>
+</select><select name="DOBYear">
+    <option>- Year -</option>
+    <option value="2020">2020</option>
+    <option value="2019">2019</option>
+        </fieldset>
+        </form>
+</body>
+
+</html>
