@@ -1,19 +1,17 @@
 body {
-  background-color: rgb(190, 190, 190);
+  background-color: white;
   box-sizing: border-box;
+  width:100%;
 }
 
 .welcome {
+  color: black;
   text-align: center;
-  color: blue;
-  position: relative;
 }
 
-h1 {
+h1{
   padding-top: 20%;
-  padding-right: 50%;
   text-align: center;
-  left: 50%;
 }
 
 .calibri {
@@ -35,12 +33,18 @@ ul {
 }
 
 li {
-  margin-left: 75px;
+  margin-left: 5%;
   padding: 25px;
   display: inline;
+  color: white;
 }
 
 li:hover {
   background-color: rgb(107, 107, 107);
   color: white;
+  text-decoration: none;
+}
+
+a, a:hover{
+  text-decoration: none;
 }
