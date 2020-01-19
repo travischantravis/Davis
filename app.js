@@ -98,7 +98,7 @@ app.get("/upload1", (req, res) => {
 // @desc uploads file to DB
 app.post("/upload/image", upload.single("file"), (req, res) => {
   // res.json({ file: req.file });
-  res.redirect("/upload");
+  res.redirect("/post");
 });
 
 // @route GET /files
@@ -178,6 +178,14 @@ const UploadSchema = new Schema({
     type: String,
     required: true
   },
+  reward: {
+    type: String,
+    required: false
+  },
+  contact: {
+    type: String,
+    required: true
+  },
   date: {
     type: Date,
     default: Date.now
@@ -199,7 +207,10 @@ app.post("/upload/form", (req, res) => {
     name: req.body.name,
     item: req.body.item,
     location: req.body.location,
-    description: req.body.description
+    description: req.body.description,
+    contact: req.body.contact,
+    reward: req.body.reward,
+    date: req.body.date
   });
 
   upload
@@ -247,6 +258,24 @@ app.get("/post", async (req, res) => {
     res.json({ message: err });
   }
 });
+
+async function quickstart() {
+  // Imports the Google Cloud client library
+  const vision = require("@google-cloud/vision");
+
+  // Creates a client
+  const client = new vision.ImageAnnotatorClient({
+    keyFilename: "./APIKey.json"
+  });
+
+  // Performs label detection on the image file
+  const [result] = await client.labelDetection("./public/img/hydro-flask.jpg");
+  const labels = result.labelAnnotations;
+  console.log("Labels:");
+  labels.forEach(label => console.log(label.description));
+}
+
+quickstart();
 
 // Routes
 // app.use("/upload", require("./routes/uploads"));
