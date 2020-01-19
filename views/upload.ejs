@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<%- include('partials/head')%>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-
-
-  <title>Document</title>
-</head>
 
 <body>
+  <%- include('partials/navbar')%>
+
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
-        <h1>upload.ejs</h1>
-        <p>Preston</p>
-        <p>create a form</p>
+      <div class="col-md-6 m-auto">
+        <h1 class="text-center display-4 my-4">Mongo File Uploads</h1>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+          <div class="custom-file mb-3">
+            <input type="file" name="file" id="file" class="custom-file-input">
+            <label for="file" class="custom-file-label">Choose File</label>
+          </div>
+          <input type="submit" value="Submit" class="btn btn-primary btn-block">
+        </form>
 
       </div>
-
     </div>
   </div>
 

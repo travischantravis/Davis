@@ -1,31 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<%- include('partials/head')%>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-
-
-  <title>Document</title>
-</head>
 
 <body>
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h1>HackDavis in ejs Homepage</h1>
-        <p>Sashank</p>
-
+        <h1 class="welcome calibri">Welcome to the MTPS Lost and Found.</h1>
+        <p class="welcome calibri">
+          Lost something? Maybe someone's seen it!
+        </p>
+        <%- include('partials/navbar')%>
       </div>
-
     </div>
   </div>
-
 
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

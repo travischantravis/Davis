@@ -1,5 +1,7 @@
 const express = require("express");
 const path = require("path");
+const bodyParser = require("body-parser");
+const multer = require("multer");
 
 const app = express();
 
@@ -16,8 +18,8 @@ app.get("/", (req, res) => {
 });
 
 //Routes
-app.use("/uploads", require("./routes/uploads"));
-app.use("/posts", require("./routes/posts"));
+app.use("/upload", require("./routes/uploads"));
+app.use("/post", require("./routes/posts"));
 
 const port = 5000;
 
