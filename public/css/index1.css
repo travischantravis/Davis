@@ -1,7 +1,7 @@
 body {
   background-color: white;
   box-sizing: border-box;
-  width:100%;
+  width: 100%;
 }
 
 .welcome {
@@ -9,7 +9,7 @@ body {
   text-align: center;
 }
 
-h1{
+h1 {
   padding-top: 20%;
   text-align: center;
 }
@@ -18,7 +18,7 @@ h1{
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-ul{
+ul {
   position: fixed;
   list-style-type: none;
   padding: 25px;
@@ -45,7 +45,8 @@ li:hover {
   text-decoration: none;
 }
 
-a, a:hover{
+a,
+a:hover {
   text-decoration: none;
   color: white;
 }
