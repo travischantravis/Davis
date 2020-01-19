@@ -1,0 +1,39 @@
+body {
+  background-color: rgb(190, 190, 190);
+  box-sizing: border-box;
+}
+
+.welcome {
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.calibri {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+ul {
+  position: fixed;
+  list-style-type: none;
+  padding: 25px;
+  background-color: black;
+  width: 100%;
+  color: white;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  margin-top: 0px;
+  margin-bottom: 25px;
+}
+
+li {
+  margin-left: 75px;
+  padding: 25px;
+  display: inline;
+}
+
+li:hover {
+  background-color: rgb(107, 107, 107);
+  color: white;
+}
