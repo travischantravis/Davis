@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head')%>
+
+<body>
+  <%- include('partials/navbar')%>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 m-auto">
+        <h1 class="text-center display-4 my-4" style="padding-right: 0;">Lost and Found</h1>
+        <h3 class="text-center display-5 my-3">Show us what you lost</h3>
+        <form action="/upload/image" method="POST" enctype="multipart/form-data">
+          <div class="custom-file mb-3">
+            <input type="file" name="file" id="file" class=" custom-file-input">
+            <label for="file" class="custom-file-label">Image of your lost item (.jpg or .png file only)</label>
+
+          </div>
+          <input type="submit" value="Submit" class="btn btn-primary btn-block">
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    $('#file').on('change', function () {
+      //get the file name
+      var fileName = $(this).val();
+      var cleanFileName = fileName.replace('C:\\fakepath\\', "");
+      //replace the "Choose a file" label
+      $(this).next('.custom-file-label').html(cleanFileName);
+    })
+  </script>
+
+
+
+</body>
+
+</html>

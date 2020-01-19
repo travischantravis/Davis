@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head')%>
+<style>
+  img {
+    width: 100%;
+  }
+</style>
+
+<body>
+  <%- include('partials/navbar')%>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 m-auto">
+        <h1 class="text-center display-4 my-4" style="padding-right: 0;">Lost and Found</h1>
+        <h3 class="text-center display-5 my-3">Tell us what did you lose</h3>
+        <form action="/upload/form" method="POST">
+          <div class="form-group">
+            <label for="name">Your name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Your name">
+          </div>
+
+          <div class="form-group">
+            <label for="item">What did you lose?</label>
+            <input type="text" class="form-control" id="item" name="item" placeholder="Item">
+          </div>
+          <div class="form-group">
+            <label for="location">Where did you lose it? (if applicable)</label>
+            <input type="text" class="form-control" id="location" name="location" placeholder="Location">
+          </div>
+          <div class="form-group">
+            <label for="description">Describe more details</label>
+            <textarea class="form-control" id="description" name="description" rows="3"
+              placeholder="Description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="contact">Contact Information</label>
+            <input type="text" class="form-control" id="contact" name="contact" placeholder="Contact">
+          </div>
+          <div class="form-group">
+            <label for="reward">How much would you reward the person who recovered your item?</label>
+            <input type="text" class="form-control" id="reward" name="reward" placeholder="Reward (Tentative)">
+          </div>
+
+          <input type="submit" value="Submit" class="btn btn-primary btn-block">
+        </form>
+
+      </div>
+    </div>
+    <div class="row my-5"></div>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
