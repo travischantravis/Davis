@@ -10,7 +10,7 @@
 ### To run the program
 
 1. `npm install`
-2. `npm run dev`
+2. `npm rgit un dev`
 3. go to localhost:5000 in your browser
 
 Opinions from Professors and professionals
